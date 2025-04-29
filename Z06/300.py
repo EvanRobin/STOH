@@ -53,3 +53,13 @@ ax.view_init(azim=60, elev=0)
 plt.show()
  
 print(f"Average of r over samples: {np.mean(r_vals):.4f}")
+
+n = np.zeros(len(x_vals))
+dl = abs(min(x_vals) - max(x_vals))/len(x_vals)
+for i in x_vals:
+  print(int(i/dl +1))
+  #n[i/dl + 1] += 1
+  '''
+plt.plot(n, x_vals)
+plt.show()
+'''
