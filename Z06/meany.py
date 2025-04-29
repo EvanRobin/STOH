@@ -13,7 +13,7 @@ x, y, z = 0.0, 0.0, 0.0
 # P(x, y, z) = |3, 0, 0> orbital
 def prob(x, y, z):
     r = math.sqrt(x**2 + y**2 + z**2)
-    return (27 - 18*r + (2*r**2))*np.exp(-r/3)
+    return ((27 - 18*r + (2*r**2))**2)*np.exp(-2r/3)
 
 r_mean = []
 r_mean_mean = []
