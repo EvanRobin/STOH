@@ -3,11 +3,11 @@ import matplotlib.pyplot as plt
 import matplotlib.animation as animation
 
 # Parameters
-L = 40       # Grid leangth
+L = 100       # Grid leangth
 p = 0.6      # Starting Tree probability
-f = 0.1      # Fire probability
+f = 0.001      # Fire probability
 g = 0.09      # Tree growth probability
-steps = 10**6   # Number of steps to simulate
+steps = 1000   # Number of steps to simulate
 
 # States
 TREE = 1
@@ -38,15 +38,17 @@ def update(grid, g):
     fire_neighbors = sum((n == FIRE) for n in neighbors)
     catch_fire = (grid == TREE) & (fire_neighbors > 0) #A tree catches fire if any neighbor is on fire.
     
-    grow_tree = (grid == EMPTY) & (np.random.rand(L, L) < g)# EMPTY grows TREE
+    catch_fire_spont = (grid == TREE) & (np.random.rand(L, L) < f)
+    
+    grow_tree = (grid == EMPTY) & (np.random.rand(L, L) < g)# Empty grows TREE
     
     # Fire dies to empty
     new_grid[grid == FIRE] = EMPTY
     new_grid[grow_tree] = TREE
     new_grid[catch_fire] = FIRE
+    new_grid[catch_fire_spont] = FIRE
 
-
-    return new_grid
+    return new_grid 
 
 def count_fires(grid):
     unique, counts = np.unique(grid, return_counts=True)
@@ -74,52 +76,40 @@ def eternal_flame(starting_g, max_g, step_g, max_steps):
             break
     return i
 
-'''
-print(eternal_flame(0.075, 0.1, 0.005, 50000000)) #took 2 hours never again
-'''
+def eternal_flame_searching(starting_g, max_g, step_g, max_steps):
+    for i in np.arange(starting_g, max_g, step_g):
+        grid = initialize_grid(L, p, f)
+        lifetime = forest_fire(grid, i, max_steps)
+        print(f"g = {i:.4f}, fire lasted {lifetime} steps")
+        if lifetime == max_steps:
+            print(f"Forest maintains fire indefinitely for g ~= {i:.4f}")
+            return i
+    return None
+
+best_g = eternal_flame_searching(0.001, 0.2, 0.001, 1000000)
+print(f"Chosen g for sustained fire: {best_g}")
 
 '''
-so the first step was from 0 to 0.2 with step of 0.0001 with max time of 10000
-result was 0.045700000000000005
-second was eternal_flame(0.0, 0.05, 0.00001, 10000)
-result was 0.041030000000000004
-third print(eternal_flame(0.039, 0.05, 0.00001, 100000))
-showed 0.05000000000000337
-conclusion is time should be longer and steps smaller
-forth eternal_flame(0.05, 0.5, 0.01, 100000)
-0.07 i should now steadily increase stepps and time
-I increased time instead again with eternal_flame(0.05, 0.8, 0.01, 1000000) got 0.08
-so I added another 0 to time with eternal_flame(0.06, 0.1, 0.01, 10000000)
-gaining 0.07999999999999999 this leads me to beileve that 1,000,000 is a completely fine if it gets the same value as 10,000,000
-got 0.07 with 1,000,000 back to the drawing board
-we shall try 5,000,000 with eternal_flame(0.07, 0.1, 0.001, 5000000)
-0.07200000000000001
+g = 0.0100, fire lasted 1000 steps
+Forest maintains fire indefinitely for g ~= 0.0100
+Chosen g for sustained fire: 0.01
 
-with eternal_flame(0.075, 0.1, 0.005, 50 000 000) the result is 0.085 
+g = 0.0100, fire lasted 10000 steps
+Forest maintains fire indefinitely for g ~= 0.0100
+Chosen g for sustained fire: 0.01
 
-i shall round it to 9% for a L = 40
+to high start
 
-'''
+g = 0.0010, fire lasted 67 steps
+g = 0.0020, fire lasted 57698 steps
+g = 0.0030, fire lasted 45 steps
+g = 0.0040, fire lasted 1000000 steps
+Forest maintains fire indefinitely for g ~= 0.0040
+Chosen g for sustained fire: 0.004
 
+tried many steps up to 1000000 all come to 4%
 
 '''
-grid = initialize_grid(L, p, f)
-print(forest_fire(grid, 0.3, 10000))
-'''
-
-# Animation cant take it
-
-# Simulation
-grid = initialize_grid(L, p, f)
-for _ in range(steps):
-    grid = update(grid, g)
-
-# Plot final state
-cmap = plt.colormaps['brg'].resampled(3)
-plt.imshow(grid, cmap=cmap, vmin=-1, vmax=1)
-plt.title(f"Final Forest State after {steps:,} Steps")
-plt.axis('off')
-plt.show()
 
 
 

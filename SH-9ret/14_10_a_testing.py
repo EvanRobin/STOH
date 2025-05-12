@@ -5,7 +5,7 @@ import matplotlib.animation as animation
 # Parameters
 L = 100       # Grid leangth
 p = 0.8      # Tree probability
-f = 0.001      # Fire probability
+f = 0.1      # Fire probability
 g = 0.01      # Tree growth probability
 steps = 200   # Number of steps to simulate
 
@@ -38,15 +38,12 @@ def update(grid):
     fire_neighbors = sum((n == FIRE) for n in neighbors)
     catch_fire = (grid == TREE) & (fire_neighbors > 0) #A tree catches fire if any neighbor is on fire.
     
-    catch_fire_spont = (grid == TREE) & (np.random.rand(L, L) < f)
-    
     grow_tree = (grid == EMPTY) & (np.random.rand(L, L) < g)# Empty grows TREE
     
     # Fire dies to empty
     new_grid[grid == FIRE] = EMPTY
     new_grid[grow_tree] = TREE
     new_grid[catch_fire] = FIRE
-    new_grid[catch_fire_spont] = FIRE
 
     return new_grid 
 
