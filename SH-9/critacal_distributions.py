@@ -105,3 +105,9 @@ plt.title("Power-law fit to cluster size distribution")
 plt.legend()
 plt.grid(True, which="both", ls="--", linewidth=0.5)
 plt.show()
+
+
+with open("cluster_data.txt", "w") as file:
+    file.write("# ClusterSize(s)    Count(N(s))\n")
+    for s, n in zip(sizes, Ns):
+        file.write(f"{s}\t{n}\n")
