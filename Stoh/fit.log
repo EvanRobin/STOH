@@ -1,0 +1,142 @@
+
+
+*******************************************************************************
+Sat May 17 14:18:08 2025
+
+
+FIT:    data read from "fire_size_distribution.txt" using 1:2
+        format = x:z
+        #datapoints = 24
+        residuals are weighted equally (unit weight)
+
+function used for fitting: f(x)
+	f(x) = a * x**(-b)
+fitted parameters initialized with current variable values
+
+iter      chisq       delta/lim  lambda   a             b            
+   0 7.0627786799e-03   0.00e+00  5.05e-02    1.000000e+00   1.000000e+00
+  26 1.8309710950e-03  -8.40e-01  5.05e-08    9.655793e-03   7.320031e-02
+
+After 26 iterations the fit converged.
+final sum of squares of residuals : 0.00183097
+rel. change during last iteration : -8.39807e-06
+
+degrees of freedom    (FIT_NDF)                        : 22
+rms of residuals      (FIT_STDFIT) = sqrt(WSSR/ndf)    : 0.00912283
+variance of residuals (reduced chisquare) = WSSR/ndf   : 8.3226e-05
+
+Final set of parameters            Asymptotic Standard Error
+=======================            ==========================
+a               = 0.00965579       +/- 0.01789      (185.3%)
+b               = 0.0732003        +/- 0.4254       (581.1%)
+
+correlation matrix of the fit parameters:
+                a      b      
+a               1.000 
+b               0.990  1.000 
+
+
+*******************************************************************************
+Sat May 17 22:36:00 2025
+
+
+FIT:    data read from "cluster_stats.txt" using 1:2
+        format = x:z
+        x range restricted to [3.00000 : 100.000]
+        #datapoints = 9
+        residuals are weighted equally (unit weight)
+
+function used for fitting: f(x)
+	f(x) = a * x**(-alpha)
+fitted parameters initialized with current variable values
+
+iter      chisq       delta/lim  lambda   a             alpha        
+   0 1.0799782646e-02   0.00e+00  1.49e-01    1.000000e+00   1.500000e+00
+  15 3.4552611890e-04  -7.96e-02  1.49e-08    4.782180e+00   2.900682e+00
+
+After 15 iterations the fit converged.
+final sum of squares of residuals : 0.000345526
+rel. change during last iteration : -7.96227e-07
+
+degrees of freedom    (FIT_NDF)                        : 7
+rms of residuals      (FIT_STDFIT) = sqrt(WSSR/ndf)    : 0.00702573
+variance of residuals (reduced chisquare) = WSSR/ndf   : 4.93609e-05
+
+Final set of parameters            Asymptotic Standard Error
+=======================            ==========================
+a               = 4.78218          +/- 0.9992       (20.89%)
+alpha           = 2.90068          +/- 0.175        (6.034%)
+
+correlation matrix of the fit parameters:
+                a      alpha  
+a               1.000 
+alpha           0.989  1.000 
+
+
+*******************************************************************************
+Fri May 23 14:21:36 2025
+
+
+FIT:    data read from 'cluster_data.txt' using 1:2
+        format = x:z
+        #datapoints = 7
+        residuals are weighted equally (unit weight)
+
+function used for fitting: f(x)
+	f(x) = a * x**(-b)
+fitted parameters initialized with current variable values
+
+iter      chisq       delta/lim  lambda   a             b            
+   0 4.9949231173e+13   0.00e+00  3.91e-01    1.000000e+00   1.000000e+00
+BREAK: Singular matrix in Invert_RtR
+
+*******************************************************************************
+Fri May 23 14:24:10 2025
+
+
+FIT:    data read from 'cluster_data.txt' using 1:2
+        format = x:z
+        #datapoints = 7
+        residuals are weighted equally (unit weight)
+
+function used for fitting: f(x)
+	f(x) = a * x**(-b)
+fitted parameters initialized with current variable values
+
+iter      chisq       delta/lim  lambda   a             b            
+   0 4.9949231173e+13   0.00e+00  3.91e-01    1.000000e+00   1.000000e+00
+BREAK: Singular matrix in Invert_RtR
+
+*******************************************************************************
+Fri May 23 14:37:12 2025
+
+
+FIT:    data read from 'cluster_data.txt' using 1:2
+        format = x:z
+        #datapoints = 9
+        residuals are weighted equally (unit weight)
+
+function used for fitting: f(x)
+	f(x) = a * x**(-b)
+fitted parameters initialized with current variable values
+
+iter      chisq       delta/lim  lambda   a             b            
+   0 4.3910040160e+07   0.00e+00  3.58e-01    1.000000e+00   1.000000e+00
+BREAK: Singular matrix in Invert_RtR
+
+*******************************************************************************
+Fri May 23 14:42:18 2025
+
+
+FIT:    data read from 'cluster_data.txt' using 1:2
+        format = x:z
+        #datapoints = 8
+        residuals are weighted equally (unit weight)
+
+function used for fitting: f(x)
+	f(x) = a * x**(-b)
+fitted parameters initialized with current variable values
+
+iter      chisq       delta/lim  lambda   a             b            
+   0 1.1023370869e+07   0.00e+00  3.72e-01    1.000000e+00   1.000000e+00
+BREAK: Singular matrix in Invert_RtR
